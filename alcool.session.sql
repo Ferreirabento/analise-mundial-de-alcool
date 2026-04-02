@@ -4,8 +4,16 @@ SELECT Countries
 FROM tabela_principal;
 
 -- escolhendo a população para usar estatistica --
--- resolvi escolher um pais aleatorio sem motivo aparente -- 
-SELECT Gender, Countries
+-- sendo homem --
+SELECT DISTINCT(Countries), Count(Gender)
 FROM tabela_principal
-WHERE Gender = "Male" and Countries = "Brazil"
-ORDER BY Countries;
+WHERE Gender = "Male"
+GROUP BY Countries
+ORDER BY Count(Gender) DESC;
+
+--sendo mulher --
+SELECT DISTINCT(Countries), COUNT(Gender)
+FROM tabela_principal
+WHERE Gender = "Female"
+GROUP BY Countries
+ORDER BY Count(Gender) DESC;
